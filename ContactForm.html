@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="CSS File/Logoimage.css" />
+	<link rel="stylesheet" href="CSS File/Styles.css" />
+
+	<title>Contact Us</title>
+	<style>
+		body {
+			background-image: url('Images/contactUsBg.jpg');
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: cover;
+			justify-content: center;
+			align-items: center;
+			font-family: Courier, monospace;
+			height: 100vh;
+			margin: 0;
+			color: white;
+
+		}
+
+
+		.form-box {
+			background: #e5cb9fae;
+			padding: 40px 30px;
+			border-radius: 15px;
+			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+			width: 350px;
+			align-items: center;
+			display: flex;
+			justify-content: center;
+			margin: auto;
+			animation: fadeIn 1.5s ease-in-out;
+		}
+
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+				transfrom: translateY(20px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.form-box h2 {
+			text-align: center;
+			margin-bottom: 20px;
+			color: #333;
+		}
+
+		.form-box label {
+			font-weight: 500;
+			display: block;
+			margin-bottom: 8px;
+			color: #555;
+			text-align: center;
+		}
+
+		.form-box input,
+		.form-box textarea {
+			width: 100%;
+			padding: 10px 12px;
+			margin-bottom: 15px;
+			border: 1px solid #ccc;
+			border-radius: 8px;
+			font-size: 15px;
+			outline: none;
+			transition: border 0.3s;
+			background-color: #eee4ab9f;
+		}
+
+		.form-box input:focus,
+		.form-box textarea:focus {
+			border-color: #99c4c8;
+		}
+
+		.form-box button {
+			width: 100%;
+			background: #99c4c8;
+			color: white;
+			font-size: 16px;
+			font-weight: 600;
+			padding: 10px;
+			border: none;
+			border-radius: 8px;
+			cursor: pointer;
+			transition: background 0.3s;
+		}
+
+		.form-box button:hover {
+			background: #68A7AD;
+		}
+
+		header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 20px 40px;
+			background-color: transparent;
+		}
+
+		#center {
+			text-align: center;
+		}
+
+		a {
+			color: white;
+		}
+
+		header {
+			padding: 20px;
+		}
+
+		#infotable {
+			display: flex;
+			justify-content: center;
+		}
+
+		#error-message {
+			color: red;
+			font-size: 14px;
+			text-align: center;
+			margin-bottom: 10px;
+		}
+	</style>
+
+</head>
+
+<body>
+	<header>
+		<h1><a href="index.html" class="site-title-link">
+				<div id="logo">
+					<img src="Images/logo.png" alt="logo">
+				</div>
+			</a></h1>
+		<nav class="gradient-menu">
+			<a href="Home.php">Home</a>
+			<a href="aoutdoor.php">Outdoor</a>
+			<a href="aindoor.php">Indoor</a>
+			<a href="RegistrationForm.html">Registration</a>
+			<a href="Login.php">Login</a>
+		</nav>
+	</header>
+	<h2 style="text-align: center;">
+		<img src="Images/index_reg_ico.png" alt="contactUsIcon" style="width:5%; height: auto;">
+		CONTACT THE DAILY DISCOVERIES TEAM!
+		<img src="Images/index_reg_ico.png" alt="contactUsIcon" style="width:5%; height: auto;">
+	</h2>
+	<p style="text-align: center;">HAVE A QUESTION, SUGGESTION, OR FEEDBACK?<br> We'd love to hear from you!</p>
+
+	<div class="form-box">
+		<!--<div id="error-message"></div> was here wrapping the form not good-->
+			<form action="contact_us_form.php" method="post" onsubmit="return validateForm()">
+					<div id="error-message"></div><!--Moved this for contact.php to work-->
+				<label for="name">Full Name:</label>
+				<input type="text" id="name" name="name" placeholder="Enter Your Full Name">
+
+				<label for="email">Email Address:</label>
+				<input type="email" id="email" name="email" placeholder="Enter your email Address" required>
+
+				<label for="message">Message:</label>
+				<textarea id="message" name="message" rows="4" cols="30" placeholder="Type your message here..."
+					required></textarea>
+				<button type="submit">Send Message</button>
+			</form>
+		</div>
+	</div>
+	<script>
+		function validateForm() {
+			var name = document.getElementById("name").value.trim();
+			var email = document.getElementById("email").value.trim();
+			var message = document.getElementById("message").value.trim();
+			var error = document.getElementById("error-message");
+			
+			// Clear previous error
+			error.textContent = "";
+
+			// Check if any field is empty
+			if (name === "" || email === "" || message === "") {
+				error.textContent = "Please fill in all fields!";
+				return false;
+			}
+
+			// Validate name (only letters and spaces, at least 3 characters)
+			var namePattern = /^[A-Za-z\s]{3,}$/;
+			if (!name.match(namePattern)) {
+				error.textContent = "Full name should contain only letters and be at least 3 characters.";
+				return false;
+			}
+
+			// Validate email format
+			var emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+			if (!email.match(emailPattern)) {
+				error.textContent = "Please enter a valid email address!";
+				return false;
+			}
+
+			// Validate message length
+			if (message.length < 10) {
+				error.textContent = "Message should be at least 10 characters long!";
+				return false;
+			}
+
+			alert("Message sent successfully!");
+			return true; // allow form submission
+		}
+	</script>
+
+	<div id="infotable">
+		<table>
+			<tr>
+				<th colspan=2 style="text-align: center;">CONTACT US!</th>
+			</tr>
+
+			<tr>
+				<td>NIGEL:</td>
+				<td><a href="mailto: nigel.lim@umail.uom.ac.mu">nigel.lim@umail.uom.ac.mu</a></td>
+			</tr>
+			<tr>
+				<td>ROOPSHIKA:</td>
+				<td><a href="mailto: roopshika.ghoorah@umail.uom.ac.mu">roopshika.ghoorah@umail.uom.ac.mu</td>
+			</tr>
+		</table>
+	</div>
+	<footer>
+		&copy; 2025 Daily Discoveries | Activities & Learning Fun
+	</footer>
+	<div class="second-footer">
+		<span>Follow Us:&nbsp;</span>
+
+		<span class="social-flex">
+			<a href="https://discord.gg/n4U4xrXk" target="_blank">
+				<img src="Images/DiscordBlack.png" alt="Discord">
+			</a>
+			<a href="https://chat.whatsapp.com/K8FOKO28LOSEPVYINs277R?mode=ems_copy_t" target="_blank">
+				<img src="Images/Whatapp.png" alt="WhatsApp">
+			</a>
+		</span>
+	</div>
+
+</body>
+
+</html>
