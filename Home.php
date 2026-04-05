@@ -88,7 +88,7 @@ session_start();
       <a href="aindoor.php">Indoor</a>
       <a href="/projectno1/aoutdoor.php">Outdoor</a>
       <a href="ContactForm.html">Contact Us</a>
-      <a href="RegistrationForm.html">Register</a>
+      <a href="RegistrationForm.php">Register</a>
       <!--<a href="Login.php">Login</a>-->
 
       <!--Admin Only link(John) -->

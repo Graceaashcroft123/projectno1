@@ -171,7 +171,7 @@ $indoorResult = mysqli_query($conn, $sqlIndoor);
 			<a href="Home.php">Home</a>
 			<a href="aoutdoor.php">Outdoor</a>
 			<a href="ContactForm.html">Contact Us</a>
-			<a href="RegistrationForm.html">Register</a>
+			<a href="RegistrationForm.php">Register</a>
 		<!--Check if a user is logged in using the session-->
 		<!--If logged in: show a welcome message + Logout link-->
 		<!--If not logged in: show the Login link-->

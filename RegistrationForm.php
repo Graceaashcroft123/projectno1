@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (isset($_SESSION['reg_success']) && $_SESSION['reg_success'] === false) {
+    echo "<script>alert('This email address already exists! Please log in instead.');</script>";
+    unset($_SESSION['reg_success']); // clear flag after showing it
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,8 +35,26 @@
                 return false;
             }
             // If all checks pass
-            alert("Registration successful!");
+            //alert("Registration successful!");
             return true;
+        }
+    </script>
+    <script>
+        function ajax() {
+            try {
+                requestbox = new XMLHttpRequest();
+            }
+            catch (e) { alert("Your browser does not support AJAX !"); }
+            var uname = document.regform.username.value;
+            url = "checkuname.php?username=" + uname;
+            requestbox.open("GET", url, true);
+            requestbox.onreadystatechange = displayResult;
+            requestbox.send(null);
+        }
+        function displayResult() {
+            if ((requestbox.readyState == 4) && (requestbox.status == 200)) {
+                document.getElementById('message').innerHTML = requestbox.responseText;
+            }
         }
     </script>
 </head>
@@ -50,8 +77,9 @@
         </h2>
         <form name="regform" id="regform" action="regform.php" method="GET" onsubmit="return FormValidation(event)">
             <div class="input-group">
-                <input type="text" name="username" id="username" required>
+                <input type="text" name="username" id="username" required onblur="ajax()">
                 <label for="username">Username</label>
+                <div id='message'></div>
             </div>
             <div class="input-group">
                 <input type="email" name="emailadd" id="emailadd" required>
