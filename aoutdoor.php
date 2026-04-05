@@ -273,8 +273,8 @@ $OutdoorResult = mysqli_query($conn, $sqlOutdoor);
         <nav class="gradient-menu">
             <a href="Home.php">Home</a>
             <a href="aindoor.php">Indoor</a>
-	        <a href="ContactForm.php">Contact Us</a>
-            <a href="RegistrationForm.php">Register</a>
+	        <a href="ContactForm.html">Contact Us</a>
+            <a href="RegistrationForm.html">Register</a>
             
             <?php if(isset($_SESSION['username'])): ?>
                 <a href='#'>User-<?php echo htmlspecialchars($_SESSION['username']); ?></a>

@@ -170,8 +170,8 @@ $indoorResult = mysqli_query($conn, $sqlIndoor);
 		<nav class="gradient-menu">
 			<a href="Home.php">Home</a>
 			<a href="aoutdoor.php">Outdoor</a>
-			<a href="ContactForm.php">Contact Us</a>
-			<a href="RegistrationForm.php">Register</a>
+			<a href="ContactForm.html">Contact Us</a>
+			<a href="RegistrationForm.html">Register</a>
 		<!--Check if a user is logged in using the session-->
 		<!--If logged in: show a welcome message + Logout link-->
 		<!--If not logged in: show the Login link-->
