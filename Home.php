@@ -88,7 +88,7 @@ session_start();
       <a href="aindoor.php">Indoor</a>
       <a href="/projectno1/aoutdoor.php">Outdoor</a>
       <a href="ContactForm.html">Contact Us</a>
-      <a href="RegistrationForm.php">Register</a>
+      
       <!--<a href="Login.php">Login</a>-->
 
       <!--Admin Only link(John) -->
@@ -96,6 +96,7 @@ session_start();
         <a href="Logout.php">Logout</a>      <!--If user is logged in, show Logout link -->
       <?php else: ?>
         <a href="Login.php">Login</a>        <!--If user is not logged in show Login link -->
+        <a href="RegistrationForm.php">Register</a>
       <?php endif; ?>
       <!-- Show Admin link only if user is logged in AND has role 'admin' -->
       <?php if (isset($_SESSION['user_id']) && $_SESSION['role']==='admin'):?>
