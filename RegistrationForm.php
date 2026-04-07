@@ -11,6 +11,7 @@ if (isset($_SESSION['reg_success']) && $_SESSION['reg_success'] === false) {
 <html lang="en">
 
 <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Registration</title>
     <link rel="stylesheet" href="CSS File/CSS REG.css">
     <link rel="stylesheet" href="CSS File/Logoimage.css">
@@ -40,6 +41,7 @@ if (isset($_SESSION['reg_success']) && $_SESSION['reg_success'] === false) {
         }
     </script>
     <script>
+
         function ajax() {
             try {
                 requestbox = new XMLHttpRequest();
@@ -52,10 +54,20 @@ if (isset($_SESSION['reg_success']) && $_SESSION['reg_success'] === false) {
             requestbox.send(null);
         }
         function displayResult() {
-            if ((requestbox.readyState == 4) && (requestbox.status == 200)) {
-                document.getElementById('message').innerHTML = requestbox.responseText;
+             if ((requestbox.readyState == 4) && (requestbox.status == 200)) {
+            var response = requestbox.responseText.trim();
+            document.getElementById('message').innerHTML = response;
+            //use of JQuery Library (red border means username already exists and green border means username is available)
+            if (response.includes("valid")) { 
+                $('#username').css('border', '2px solid green');
+                $('#message').css('color', 'green');
+            } else {
+            $('#username').css('border', '2px solid red');
+            $('#message').css('color', 'red');
             }
         }
+    }
+
     </script>
 </head>
 
